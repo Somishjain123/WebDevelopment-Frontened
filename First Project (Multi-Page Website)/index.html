@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillSwap | Home</title>
+  <style>
+    :root {
+      --primary: #3f51b5;
+      --primary-dark: #303f9f;
+      --accent: #ff9800;
+      --light-bg: #f9f9f9;
+      --text: #2c2c2c;
+      --dark: #121212;
+    }
+  
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+  
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light-bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+  
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      padding: 1rem 2rem;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+  
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+  
+    .nav-links a:hover {
+      background-color: var(--accent);
+    }
+  
+    .hero {
+      padding: 5rem 2rem;
+      background: linear-gradient(to right, #e3f2fd, #fce4ec);
+      text-align: center;
+    }
+  
+    .hero h1 {
+      font-size: 3rem;
+      color: var(--primary-dark);
+    }
+  
+    .hero p {
+      font-size: 1.25rem;
+      margin: 1rem auto;
+      color: #555;
+      max-width: 600px;
+    }
+  
+    .cta-btn {
+      padding: 0.75rem 2rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+  
+    .cta-btn:hover {
+      background: #fb8c00;
+    }
+  
+    .testimonials {
+      padding: 3rem 1rem;
+      background: #fbe9e7;
+      text-align: center;
+    }
+  
+    .testimonial {
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #333;
+    }
+  
+    .newsletter {
+      padding: 3rem 1rem;
+      background: #fff3e0;
+      text-align: center;
+    }
+  
+    .newsletter input[type="email"] {
+      padding: 0.75rem;
+      font-size: 1rem;
+      width: 250px;
+      max-width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    .newsletter button {
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+  
+    .newsletter button:hover {
+      background: var(--primary-dark);
+    }
+  
+    footer {
+      padding: 1rem;
+      text-align: center;
+      background: var(--primary);
+      color: white;
+    }
+  
+    /* Dark Mode */
+    .dark-mode {
+      background: var(--dark);
+      color: #f1f1f1;
+    }
+  
+    .dark-mode nav,
+    .dark-mode footer {
+      background: #1e1e1e;
+    }
+  
+    .dark-mode .hero {
+      background: #1a1a1a;
+      color: white;
+    }
+  
+    .dark-mode .nav-links a:hover {
+      background-color: var(--accent);
+    }
+  
+    .dark-mode .testimonial {
+      color: #ccc;
+    }
+  
+    .dark-mode .newsletter {
+      background: #2a2a2a;
+    }
+  
+    .dark-mode .newsletter input,
+    .dark-mode .newsletter button {
+      background: #444;
+      color: white;
+      border-color: #555;
+    }
+  
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 0.5rem;
+      border: none;
+      background: var(--primary-dark);
+      color: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: background 0.3s;
+    }
+  
+    .dark-mode-toggle:hover {
+      background: var(--primary);
+    }
+  
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+  
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+  
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+  
+  
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">SkillSwap</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="swap.html">Swap</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="auth.html">Login</a></li>
+        <li><a href="Dashboard.html">dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Replace the below section content with unique page content -->
+    <section class="hero">
+      <h1>Welcome to SkillSwap</h1>
+      <p>Swap your skills and grow together!</p>
+      <a href="register.html" class="cta-btn">Get Started</a>
+    </section>
+
+    <section class="testimonials">
+      <div class="testimonial">"This platform helped me learn Spanish!"</div>
+      <div class="testimonial" style="display:none">"I taught guitar and learned coding!"</div>
+      <div class="testimonial" style="display:none">"Best platform for peer-to-peer learning."</div>
+    </section>
+
+    <section class="newsletter" id="newsletter">
+      <form>
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 SkillSwap. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Testimonial Slider
+    let testimonials = document.querySelectorAll(".testimonial");
+    let index = 0;
+    setInterval(() => {
+      testimonials.forEach(t => t.style.display = "none");
+      testimonials[index].style.display = "block";
+      index = (index + 1) % testimonials.length;
+    }, 5000);
+
+    // Newsletter
+    const newsletterForm = document.querySelector("#newsletter form");
+    if (newsletterForm) {
+      newsletterForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Thank you for subscribing!");
+        newsletterForm.reset();
+      });
+    }
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.createElement("button");
+    darkModeToggle.innerText = "🌙";
+    darkModeToggle.classList.add("dark-mode-toggle");
+    document.body.appendChild(darkModeToggle);
+
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
+
+</body>
+</html>

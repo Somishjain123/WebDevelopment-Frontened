@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills | SkillSwap</title>
+  <style>
+    :root {
+      --primary: #4a90e2;
+      --primary-dark: #357ab8;
+      --accent: #ff9800;
+      --bg: #f4f6fa;
+      --text: #222;
+      --light: #ffffff;
+      --card-bg: #f5f5f5;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      padding: 1rem 2rem;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .page-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.8rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-card h3 {
+      margin-top: 0;
+      color: var(--primary-dark);
+    }
+
+    footer {
+      padding: 1.2rem;
+      text-align: center;
+      background: var(--primary-dark);
+      color: white;
+      font-size: 0.95rem;
+    }
+
+    /* Dark Mode Styles */
+    .dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    .dark-mode nav,
+    .dark-mode footer {
+      background: #1e1e1e;
+    }
+
+    .dark-mode .skill-card {
+      background: #1f1f1f;
+      color: white;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.04);
+    }
+
+    .dark-mode .skill-card h3 {
+      color: var(--accent);
+    }
+
+    .dark-mode .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 0.6rem;
+      border: none;
+      background: var(--primary-dark);
+      color: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: background 0.3s;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--primary);
+    }
+
+    @media (max-width: 600px) {
+      .page-section {
+        padding: 2.5rem 1rem;
+      }
+      .skill-card {
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">SkillSwap</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="swap.html">Swap</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="auth.html">Login</a></li>
+        <li><a href="Dashboard.html">dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-section">
+      <h1>Explore Skills</h1>
+      <p>Discover the variety of skills available for swapping on our platform.</p>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Web Development</h3>
+          <p>Learn how to build websites and apps using HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Graphic Design</h3>
+          <p>Exchange your design knowledge or learn Photoshop, Illustrator, and more.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Photography</h3>
+          <p>Master camera techniques or editing skills with fellow creatives.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Cooking</h3>
+          <p>Share your recipes or learn to cook cuisines from around the world.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Music</h3>
+          <p>Teach instruments or take lessons from skilled musicians.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Languages</h3>
+          <p>Practice speaking and writing in different languages with native speakers.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Public Speaking</h3>
+          <p>Improve your presentation and communication skills with practical techniques.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Video Editing</h3>
+          <p>Learn to edit videos using tools like Premiere Pro, Final Cut, or DaVinci Resolve.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 SkillSwap. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.createElement("button");
+    darkModeToggle.innerText = "🌙";
+    darkModeToggle.classList.add("dark-mode-toggle");
+    document.body.appendChild(darkModeToggle);
+
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
+
+</body>
+</html>

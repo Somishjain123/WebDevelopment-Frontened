@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search | SkillSwap</title>
+  <style>
+    :root {
+      --primary-color: #007bff;
+    }
+  
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+  
+    nav {
+      display: flex;
+      justify-content: space-between;
+      background: #222;
+      padding: 1rem;
+      color: white;
+    }
+  
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+  
+    .nav-links a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+  
+    .nav-links a:hover {
+      color: #339cff;
+    }
+  
+    .page-section {
+      padding: 3rem 2rem;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+  
+    .page-section h1 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+  
+    input[type="text"] {
+      width: 100%;
+      max-width: 500px;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      border: 2px solid var(--primary-color);
+      border-radius: 6px;
+      outline: none;
+      transition: box-shadow 0.3s, border-color 0.3s;
+    }
+  
+    input[type="text"]:focus {
+      box-shadow: 0 0 0 2px #80bdff;
+      border-color: #339cff;
+    }
+  
+    .results {
+      text-align: left;
+    }
+  
+    .result-card {
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-left: 4px solid var(--primary-color);
+    }
+  
+    footer {
+      padding: 1rem;
+      text-align: center;
+      background: #222;
+      color: white;
+    }
+  
+    .dark-mode {
+      background: #121212;
+      color: #f1f1f1;
+    }
+  
+    .dark-mode nav,
+    .dark-mode footer {
+      background: #1e1e1e;
+    }
+  
+    .dark-mode .nav-links a {
+      color: #66b3ff;
+    }
+  
+    .dark-mode .page-section h1 {
+      color: #66b3ff;
+    }
+  
+    .dark-mode input[type="text"] {
+      background: #2a2a2a;
+      color: white;
+      border: 2px solid #66b3ff;
+    }
+  
+    .dark-mode .result-card {
+      background: #1f1f1f;
+      color: white;
+      border-left: 4px solid #66b3ff;
+    }
+  
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 0.5rem;
+      border: none;
+      background: #333;
+      color: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
+  
+
+</head>
+<body>
+
+  <header>
+    <nav>
+        <div class="logo">SkillSwap</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="swap.html">Swap</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="auth.html">Login</a></li>
+            <li><a href="Dashboard.html">dashboard</a></li>
+        </ul>
+      </nav>
+  </header>
+
+  <main>
+    <section class="page-section">
+      <h1>Search for Skills or Users</h1>
+      <input type="text" id="searchInput" placeholder="Type a skill or user name..." />
+
+      <div class="results" id="resultsContainer">
+        <!-- Search results will be inserted here -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 SkillSwap. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const data = [
+      { name: "Emma", skill: "Graphic Design" },
+      { name: "Jake", skill: "Web Development" },
+      { name: "Mia", skill: "Guitar Lessons" },
+      { name: "Liam", skill: "Spanish Practice" },
+      { name: "Noah", skill: "Illustration Basics" }
+    ];
+
+    const input = document.getElementById("searchInput");
+    const results = document.getElementById("resultsContainer");
+
+    input.addEventListener("input", () => {
+      const query = input.value.toLowerCase();
+      results.innerHTML = "";
+
+      const filtered = data.filter(
+        item =>
+          item.name.toLowerCase().includes(query) ||
+          item.skill.toLowerCase().includes(query)
+      );
+
+      if (filtered.length === 0) {
+        results.innerHTML = "<p>No results found.</p>";
+      } else {
+        filtered.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "result-card";
+          card.innerHTML = `<strong>${item.name}</strong><br/>Skill: ${item.skill}`;
+          results.appendChild(card);
+        });
+      }
+    });
+
+    // Dark mode toggle
+    const darkModeToggle = document.createElement("button");
+    darkModeToggle.innerText = "🌙";
+    darkModeToggle.classList.add("dark-mode-toggle");
+    document.body.appendChild(darkModeToggle);
+
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
+
+</body>
+</html>

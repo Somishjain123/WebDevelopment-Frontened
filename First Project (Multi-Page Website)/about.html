@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | SkillSwap</title>
+ <style>
+   :root {
+      --primary: #3f51b5;
+      --primary-dark: #303f9f;
+      --accent: #ff9800;
+      --light-bg: #f9f9f9;
+      --text: #2c2c2c;
+      --dark: #121212;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light-bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      padding: 1rem 2rem;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: var(--accent);
+    }
+
+    .page-section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .page-section h1 {
+      font-size: 2.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+    }
+
+    .page-section p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      color: #555;
+    }
+
+    footer {
+      padding: 1rem;
+      text-align: center;
+      background: var(--primary);
+      color: white;
+      font-size: 0.95rem;
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      background: var(--dark);
+      color: #f1f1f1;
+    }
+
+    .dark-mode nav,
+    .dark-mode footer {
+      background: #1e1e1e;
+    }
+
+    .dark-mode .page-section h1 {
+      color: #fff;
+    }
+
+    .dark-mode .page-section p {
+      color: #ccc;
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 0.6rem 0.7rem;
+      border: none;
+      background: var(--primary-dark);
+      color: white;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: background 0.3s;
+      z-index: 999;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--primary);
+    }
+
+    /* Fade-in Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .page-section h1 {
+        font-size: 2.2rem;
+      }
+
+      .page-section p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+
+ </style>
+  
+</head>
+<body>
+
+  <header>
+    <nav>
+        <div class="logo">SkillSwap</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="swap.html">Swap</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="auth.html">Login</a></li>
+      <li><a href="Dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+  </header>
+
+  <main>
+    <section class="page-section">
+      <h1>About SkillSwap</h1>
+      <p>
+        SkillSwap is a peer-to-peer learning platform that enables individuals to exchange skills, knowledge, and experience.
+        Whether you want to learn graphic design, teach cooking, or practice a new language — SkillSwap connects you with
+        people who are willing to share what they know and learn something new in return.
+      </p>
+      <p>
+        Our mission is to make learning accessible, personal, and community-driven. No money involved — just your time and your passion.
+        Learn from real people, grow your network, and build new capabilities, all while helping others do the same.
+      </p>
+      <p>
+        Join us in building a global community of lifelong learners and skill sharers. Let’s grow together!
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 SkillSwap. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.createElement("button");
+    darkModeToggle.innerText = "🌙";
+    darkModeToggle.classList.add("dark-mode-toggle");
+    document.body.appendChild(darkModeToggle);
+
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
+
+</body>
+</html>
