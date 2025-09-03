@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Swap</title>
+    <style>
+        /* Global Styles */
+          /* Global Styles */
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f5f5f5; /* Light gray background */
+            color: #333; /* Dark gray text */
+            text-align: center;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white; /* White background */
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #007BFF; /* Blue accent color */
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FF6B6B; /* Orange accent color on hover */
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: white; /* White background */
+            border-bottom: 1px solid #e0e0e0; /* Soft border */
+        }
+
+        #home {
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #007BFF; /* Blue accent color */
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #007BFF; /* Blue accent color */
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555; /* Slightly darker gray text */
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        #about {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            padding: 60px 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.1); /* Soft blue shadow */
+            margin: 50px auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        #about h2 {
+            font-size: 36px;
+            text-shadow: 0 0 10px rgba(0, 123, 255, 0.1); /* Soft blue shadow */
+        }
+
+        #about p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #about h3 {
+            font-size: 24px;
+            color: #FF6B6B; /* Orange accent color */
+            margin-top: 30px;
+        }
+
+        /* Features Section */
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+            background: white; /* Solid white on hover */
+        }
+
+        .feature img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 24px;
+            color: #FF6B6B; /* Orange accent color */
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 16px;
+        }
+
+        /* Partners Section */
+        #partners {
+            padding: 60px 20px;
+            min-height: auto;
+        }
+
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            border-radius: 10px;
+            border: 2px solid rgba(0, 123, 255, 0.1); /* Soft blue border */
+        }
+
+        .partner-logos img {
+            width: 150px; /* Increased logo size */
+            height: auto;
+            filter: grayscale(100%);
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .partner-logos img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        /* Stories Section */
+        #stories {
+            padding: 60px 20px;
+            min-height: auto;
+        }
+
+        .stories-container {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 20px;
+            max-width: 100vw;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            border-radius: 10px;
+            border: 2px solid rgba(0, 123, 255, 0.1); /* Soft blue border */
+        }
+
+        .story-page {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            padding: 20px;
+        }
+
+        .story {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: transform 0.3s, background 0.3s;
+            width: 30%;
+            margin: auto;
+        }
+
+        .story:hover {
+            transform: scale(1.05);
+            background: white; /* Solid white on hover */
+        }
+
+        .story img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .story h2 {
+            font-size: 20px;
+            color: #007BFF; /* Blue accent color */
+        }
+
+        .story p {
+            font-size: 16px;
+            color: #555; /* Slightly darker gray text */
+        }
+
+        /* Sign-Up Section */
+        #signup {
+            padding: 60px 20px;
+            min-height: auto;
+        }
+
+        .signup-container {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            max-width: 500px;
+            width: 100%;
+            border: 2px solid rgba(0, 123, 255, 0.1); /* Soft blue border */
+        }
+
+        .signup-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #e0e0e0; /* Light gray border */
+            border-radius: 5px;
+        }
+
+        .signup-container button {
+            background: #007BFF; /* Blue accent color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .signup-container button:hover {
+            background: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Newsletter Section */
+        #newsletter {
+            padding: 60px 20px;
+        }
+
+        .newsletter-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .newsletter-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #e0e0e0; /* Light gray border */
+            border-radius: 5px;
+        }
+
+        .newsletter-container button {
+            background: #007BFF; /* Blue accent color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .newsletter-container button:hover {
+            background: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Footer */
+        footer {
+            background: white; /* White background */
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0; /* Soft border */
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #555; /* Slightly darker gray text */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 800px) {
+            .features-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .story {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .features-container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .story {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+        /* Dark Mode Styling */
+.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar */
+.dark-mode nav {
+    background: #1f1f1f;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Sections */
+.dark-mode section {
+    background: #181818;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+}
+
+/* Features & Stories */
+.dark-mode .feature,
+.dark-mode .story {
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.dark-mode .feature:hover,
+.dark-mode .story:hover {
+    transform: scale(1.03);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Buttons */
+.dark-mode button {
+    background: linear-gradient(135deg, #ff8c00, #ff2d55);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.dark-mode button:hover {
+    background: linear-gradient(135deg, #ff6500, #ff1f4a);
+    transform: scale(1.05);
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #f1c40f, #ff5733);
+    color: black;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.dark-mode-toggle:hover {
+    background: linear-gradient(135deg, #d4ac0d, #e04030);
+    transform: scale(1.1);
+}
+
+/* Input Fields */
+.dark-mode input {
+    background: #2b2b2b;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+/* Links */
+.dark-mode a {
+    color: #00d4ff;
+    transition: color 0.3s ease;
+}
+
+.dark-mode a:hover {
+    color: #ff4757;
+}
+
+/* Footer */
+.dark-mode footer {
+    background: #1f1f1f;
+    box-shadow: 0 -2px 8px rgba(255, 255, 255, 0.1);
+}
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 80px; /* Moved below the navbar */
+    right: 20px;
+    background: linear-gradient(135deg, #f1c40f, #ff5733);
+    color: black;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    transition: background 0.3s, transform 0.2s;
+    z-index: 1000; /* Ensures button stays on top */
+}
+
+.dark-mode-toggle:hover {
+    background: linear-gradient(135deg, #d4ac0d, #e04030);
+    transform: scale(1.1);
+}
+/* General Dark Mode */
+.dark-mode {
+    background: #1e1e1e;
+    color: #f1f1f1;
+}
+
+/* Navigation */
+.dark-mode nav {
+    background: #252525;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode nav a {
+    color: #00eaff;
+}
+
+.dark-mode nav a:hover {
+    color: #ff4d6d;
+}
+
+/* About Us Section */
+.dark-mode #about {
+    background: #2a2a2a;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+.dark-mode #about h2 {
+    color: #00eaff;
+}
+
+.dark-mode #about p {
+    color: #ccc;
+}
+
+.dark-mode #about h3 {
+    color: #ff4d6d;
+}
+
+/* Stories Section */
+.dark-mode .stories-container {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(0, 212, 255, 0.5);
+}
+
+.dark-mode .story {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .story h2 {
+    color: #00eaff;
+}
+
+.dark-mode .story p {
+    color: #f1f1f1;
+}
+
+/* Sign-Up Section */
+.dark-mode #signup {
+    background: #2a2a2a;
+}
+
+.dark-mode .signup-container {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(0, 212, 255, 0.5);
+}
+
+.dark-mode .signup-container input {
+    background: #333;
+    color: #fff;
+    border: 1px solid #00eaff;
+}
+
+.dark-mode .signup-container button {
+    background: #ff4d6d;
+}
+
+.dark-mode .signup-container button:hover {
+    background: #e04050;
+}
+
+/* Newsletter Section */
+.dark-mode #newsletter {
+    background: #2a2a2a;
+}
+
+.dark-mode .newsletter-container {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .newsletter-container input {
+    background: #333;
+    color: #fff;
+}
+
+.dark-mode .newsletter-container button {
+    background: #ff4d6d;
+}
+
+.dark-mode .newsletter-container button:hover {
+    background: #e04050;
+}
+
+/* Footer */
+.dark-mode footer {
+    background: #252525;
+    color: #f1f1f1;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <button id="dark-mode-toggle">🌙 Dark Mode</button>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#signup">Sign Up</a>
+        <a href="#features">Features</a>
+        <a href="#partners">Partners</a>
+        <a href="#stories">User Stories</a>
+        <a href="#newsletter">Newsletter</a>
+    </nav>
+
+    <section id="home">
+        <div class="content">
+            <h1>🔥 Skill Swap Platform 🔥</h1>
+            <p>Find people who have the skills you want and teach them something in return.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="content">
+            <h2>📖 About Us</h2>
+            <p>
+                A dynamic platform where individuals come together to <strong>share, exchange, and learn new skills</strong>.
+                Our goal is to create a thriving community of <strong>lifelong learners, professionals, and enthusiasts</strong>
+                who can benefit from each other's expertise.
+            </p>
+            <h3>Why Choose Skill Swap?</h3>
+            <p>✅ <strong>Interactive Learning:</strong> Participate in workshops, webinars, and one-on-one mentoring sessions.</p>
+            <p>✅ <strong>Community Engagement:</strong> Connect with like-minded individuals and expand your network.</p>
+            <p>✅ <strong>Gamification & Rewards:</strong> Earn badges, climb leaderboards, and get expert endorsements.</p>
+            <p>✅ <strong>Skill Verification:</strong> Get your skills verified by industry experts.</p>
+        </div>
+    </section>
+
+    <section id="signup">
+        <div class="signup-container">
+            <h2>Sign Up</h2>
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#">Login here</a></p>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="content">
+            <h2>✨ Features</h2>
+            <div class="features-container">
+                <div class="feature">
+                    <img src="user-profile-icon.png.png" alt="User Profiles">
+                    <h3>User Profiles</h3>
+                    <p>Create and manage profiles with skills and experience levels.</p>
+                </div>
+                <div class="feature">
+                    <img src="marketplace-icon.png.png" alt="Skill Exchange Marketplace">
+                    <h3>Skill Exchange Marketplace</h3>
+                    <p>Match with users who need the skills you offer and vice versa.</p>
+                </div>
+                <div class="feature">
+                    <img src="interactive-tools-icon.png" alt="Interactive Tools">
+                    <h3>Interactive Tools</h3>
+                    <p>Collaborate using forums, messaging, and interactive content.</p>
+                </div>
+                <div class="feature">
+                    <img src="community-icon.png" alt="Community Features">
+                    <h3>Community Features</h3>
+                    <p>Join discussions, networking groups, and mentorship programs.</p>
+                </div>
+                <div class="feature">
+                    <img src="gamification-icon.png" alt="Gamification">
+                    <h3>Gamification</h3>
+                    <p>Earn badges, rewards, and skill endorsements.</p>
+                </div>
+                <div class="feature">
+                    <img src="verification-icon.png" alt="Skill Verification">
+                    <h3>Skill Verification</h3>
+                    <p>Get your skills verified by experts for authenticity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners">
+        <h2>Meet Our Amazing Partners</h2>
+        <p>We collaborate with top organizations to bring you the best skill-swapping experience.</p>
+        <div class="partner-logos">
+            <img src="partners.png" alt="Partner 1">
+            <img src="partners.png" alt="Partner 2">
+            <img src="partners.png" alt="Partner 3">
+            <img src="partners.png" alt="Partner 4">
+        </div>
+    </section>
+
+    <section id="stories">
+        <h2>User Stories</h2>
+        <div class="stories-container">
+            <!-- Page 1 -->
+            <div class="story-page">
+                <div class="story">
+                    <img src="story1.png" alt="Alex">
+                    <h2>Alex</h2>
+                    <p>"I learned web development while teaching digital marketing! Great platform."</p>
+                </div>
+                <div class="story">
+                    <img src="story2.png" alt="Emma">
+                    <h2>Emma</h2>
+                    <p>"Swapped my Photoshop skills for video editing knowledge!"</p>
+                </div>
+                <div class="story">
+                    <img src="story3.png" alt="Jake">
+                    <h2>Jake</h2>
+                    <p>"Amazing experience sharing my coding skills with others."</p>
+                </div>
+            </div>
+            <!-- Page 2 -->
+            <div class="story-page">
+                <div class="story">
+                    <img src="story4.png" alt="Sophia">
+                    <h2>Sophia</h2>
+                    <p>"Learning a new language was fun through skill swap!"</p>
+                </div>
+                <div class="story">
+                    <img src="story5.png" alt="Liam">
+                    <h2>Liam</h2>
+                    <p>"Helped someone learn graphic design while improving my own skills."</p>
+                </div>
+                <div class="story">
+                    <img src="story6.png" alt="Olivia">
+                    <h2>Olivia</h2>
+                    <p>"Great way to exchange knowledge and grow!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="newsletter">
+        <div class="newsletter-container">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Stay updated with the latest skill swap opportunities and events!</p>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Skill Swap. All rights reserved.</p>
+    </footer>
+    <script>document.addEventListener("DOMContentLoaded", () => {
+        // Smooth Scrolling for navigation
+        document.querySelectorAll("nav a").forEach(anchor => {
+            anchor.addEventListener("click", function (event) {
+                event.preventDefault();
+                const section = document.querySelector(this.getAttribute("href"));
+                section.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+    
+        // Mobile Navigation Toggle
+        const navToggle = document.createElement("button");
+        navToggle.innerText = "☰";
+        navToggle.classList.add("nav-toggle");
+        document.querySelector("nav").prepend(navToggle);
+        navToggle.addEventListener("click", () => {
+            document.querySelector("nav").classList.toggle("open");
+        });
+    
+        // Form Validation
+        document.querySelectorAll("form").forEach(form => {
+            form.addEventListener("submit", (event) => {
+                const inputs = form.querySelectorAll("input[required]");
+                let valid = true;
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        valid = false;
+                        input.style.border = "2px solid red";
+                    } else {
+                        input.style.border = "";
+                    }
+                });
+                if (!valid) {
+                    event.preventDefault();
+                    alert("Please fill in all required fields.");
+                }
+            });
+        });
+    
+        // Auto-play horizontal scrolling for stories
+        const storiesContainer = document.querySelector(".stories-container");
+        if (storiesContainer) {
+            let scrollAmount = 0;
+            setInterval(() => {
+                scrollAmount += 300;
+                if (scrollAmount >= storiesContainer.scrollWidth) {
+                    scrollAmount = 0;
+                }
+                storiesContainer.scrollTo({ left: scrollAmount, behavior: "smooth" });
+            }, 3000);
+        }
+    
+        // Dark Mode Toggle
+        const darkModeToggle = document.createElement("button");
+        darkModeToggle.innerText = "🌙";
+        darkModeToggle.classList.add("dark-mode-toggle");
+        document.body.appendChild(darkModeToggle);
+        darkModeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+        });
+    
+        // Add Testimonials Slider
+        let testimonials = document.querySelectorAll(".testimonial");
+        let index = 0;
+        setInterval(() => {
+            testimonials.forEach(t => t.style.display = "none");
+            testimonials[index].style.display = "block";
+            index = (index + 1) % testimonials.length;
+        }, 5000);
+    
+        // Newsletter Subscription Confirmation
+        const newsletterForm = document.querySelector("#newsletter form");
+        if (newsletterForm) {
+            newsletterForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+                alert("Thank you for subscribing!");
+            });
+        }
+    });
+    // Dark Mode Toggle
+const darkModeToggle = document.createElement("button");
+darkModeToggle.innerText = "🌙";
+darkModeToggle.classList.add("dark-mode-toggle");
+
+// Append the button to the body, but position it properly
+document.body.appendChild(darkModeToggle);
+
+darkModeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+});
+</script>
+</body>
+
+</html>
